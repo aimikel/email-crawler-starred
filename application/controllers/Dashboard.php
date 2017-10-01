@@ -48,6 +48,15 @@ class Dashboard extends CI_Controller {
             redirect(base_url('dashboard'));
         }
     }
+    
+    /**
+     * Start Executing saved in_progress Jobs 
+     */
+    public function execute() {
+        $url = new Url();
+        $job = new Job($url);
+        $job->executeJobs();
+    }
    
 }
 
