@@ -217,3 +217,4 @@ There are some things that would need to be concidered for the application's ext
 * Create API KEYS for each user to use the API functionality.
 * Run the `Run Process` functionality as a worker or as a separated thread at least, immediately after the `Create new Job` button is pressed, based on server load.
 * ORM could be used ideally for quering the database.
+* A cache system for sql queries.
