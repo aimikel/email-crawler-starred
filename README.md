@@ -176,7 +176,7 @@ Until the `Run Process` functionality is completed, the Jobs stored in DB can st
 
 ---
 
-### Instalation and Configuration
+### Installation and Configuration
 
 1. Download or clone repository into your webserver. The domain should point to folder `public` where `index.php` will route into `Codeigniter`.
 2. In the folder where the application was installed perform the following: Run `cmd - command line` the command: composer create-project 
@@ -192,14 +192,9 @@ Until the `Run Process` functionality is completed, the Jobs stored in DB can st
 For code testing purposes, built-in unit_test library of CodeIgniter has been used. 6 tests were performed in total, 3 functions were tested twice with correct and failed data as parameters.
 The first 3 of these tests should value as Passed while the rest 3 of them should value as Failed.
 
-
 ---
 
-### Validation of URLs
-
-In order to check if the URL submitted by the user is a valid URL a check with filter_var() is performed.
-
-#### How to Use and Test
+### How to Use and Test
 * The project can be used by providing with a valid URL through the form field at http://aimilia-kelaidi.gr/starred/public/
 * After successfully entering the above URL, you need to manually press the 'Run Process' button, otherwise all Jobs will remain in status `in_progress`.
 * The API is uploaded on my shared hosting account with limited recourses.
@@ -208,6 +203,13 @@ In order to check if the URL submitted by the user is a valid URL a check with f
 * The API URL to GET a single Job information is http://aimilia-kelaidi.gr/starred/public/api/crawler/getJob?uuid=XXX , where the uuid parameter is dynamically used for already saved Jobs.
 * The Testing URL Report is http://aimilia-kelaidi.gr/starred/public/testing
 
+---
+
+### Notes
+
+* In order to check if the URL submitted by the user is a valid URL a check with filter_var() is performed.
+* Every Job is created with a UUID as it was considered a necessity for each and every Job to be unique. 
+* URLs creation is based on auto-increment ID because its uniqueness per Job is not necessary.
 
 ---
 
@@ -217,4 +219,3 @@ There are some things that would need to be concidered for the application's ext
 * Create API KEYS for each user to use the API functionality.
 * Run the `Run Process` functionality as a worker or as a separated thread at least, immediately after the `Create new Job` button is pressed, based on server load.
 * ORM could be used ideally for quering the database.
-* A cache system for sql queries.
