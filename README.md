@@ -1,139 +1,31 @@
-# CodeIgniter Composer Installer
+# Starred Interview Assignment
+---
 
-[![Latest Stable Version](https://poser.pugx.org/kenjis/codeigniter-composer-installer/v/stable)](https://packagist.org/packages/kenjis/codeigniter-composer-installer) [![Total Downloads](https://poser.pugx.org/kenjis/codeigniter-composer-installer/downloads)](https://packagist.org/packages/kenjis/codeigniter-composer-installer) [![Latest Unstable Version](https://poser.pugx.org/kenjis/codeigniter-composer-installer/v/unstable)](https://packagist.org/packages/kenjis/codeigniter-composer-installer) [![License](https://poser.pugx.org/kenjis/codeigniter-composer-installer/license)](https://packagist.org/packages/kenjis/codeigniter-composer-installer)
+by Aimilia Kelaidi (aim.kelaidi@gmail.com)
 
-This package installs the offical [CodeIgniter](https://github.com/bcit-ci/CodeIgniter) (version `3.1.*`) with secure folder structure via Composer.
+## Getting started
 
-**Note:** If you want to install CodeIgniter4 (under development), see <https://github.com/kenjis/codeigniter-composer-installer/tree/4.x>.
+### Synopsis
+This small email parser was implemented for the purposes of the Junior PHP Developer position assignment that was given to me on 21/09/2017 by Starred and
+it was built in PHP using `Codeigniter v.3.1` through `composer` from https://github.com/kenjis/codeigniter-composer-installer,  `Restserver` through `composer` from https://github.com/chriskacerguis/codeigniter-restserver, JQuery CDN, Bootstrap CDN and Jquery DataTables plugin.
 
-You can update CodeIgniter system folder to latest version with one command.
+The project's purpose is to parse a valid URL entered by the user and provide with the URLs and all the email addresses that are included in those. Moreover, an API Layer was implemented in order to interact with the application. The API supports HTTP requests using method GET and POST. 
 
-## Folder Structure
+For assignment purposes, no `API KEY` is required, neither any other Authentication/Authorization service to use or install the application.
 
-```
-codeigniter/
-├── application/
-├── composer.json
-├── composer.lock
-├── public/
-│   ├── .htaccess
-│   └── index.php
-└── vendor/
-    └── codeigniter/
-        └── framework/
-            └── system/
-```
+*The API was tested using LAMP Stack on Ubuntu 16.10 and WAMP64 on Windows 10. Also Postman was used to simulate requests.*
 
-## Requirements
+---
 
-* PHP 5.3.7 or later
-* `composer` command (See [Composer Installation](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx))
-* Git
+### Introduction
+For this project a user interface was created. In this, the user :
+1. Needs to fill in a valid URL address and create a new Job.
+2. Needs to press `Run Process` button so that the system can start performng the parsing functionality. ` Check -Quick explanation of the Crawler- below for more information `.
+3. View all saved Jobs and their related data.
 
-## How to Use
+As per the API Layer functionality, it allows the following operations:
+1. Allow the user to `POST` a new Job.
+2. Allow the user to `GET` information on all Jobs.
+3. Allow the user to `GET` information on a specific Job.
 
-### Install CodeIgniter
-
-```
-$ composer create-project kenjis/codeigniter-composer-installer codeigniter
-```
-
-Above command installs `public/.htaccess` to remove `index.php` in your URL. If you don't need it, please remove it.
-
-And it changes `application/config/config.php`:
-
-~~~
-$config['composer_autoload'] = FALSE;
-↓
-$config['composer_autoload'] = realpath(APPPATH . '../vendor/autoload.php');
-~~~
-
-~~~
-$config['index_page'] = 'index.php';
-↓
-$config['index_page'] = '';
-~~~
-
-#### Install Translations for System Messages
-
-If you want to install translations for system messages:
-
-```
-$ cd /path/to/codeigniter
-$ php bin/install.php translations 3.1.0
-```
-
-#### Install Third Party Libraries
-
-[Codeigniter Matches CLI](https://github.com/avenirer/codeigniter-matches-cli):
-
-```
-$ php bin/install.php matches-cli master
-```
-
-[CodeIgniter HMVC Modules](https://github.com/jenssegers/codeigniter-hmvc-modules):
-
-```
-$ php bin/install.php hmvc-modules master
-```
-
-[Modular Extensions - HMVC](https://bitbucket.org/wiredesignz/codeigniter-modular-extensions-hmvc):
-
-```
-$ php bin/install.php modular-extensions-hmvc codeigniter-3.x
-```
-
-[Ion Auth](https://github.com/benedmunds/CodeIgniter-Ion-Auth):
-
-```
-$ php bin/install.php ion-auth 2
-```
-
-[CodeIgniter3 Filename Checker](https://github.com/kenjis/codeigniter3-filename-checker):
-
-```
-$ php bin/install.php filename-checker master
-```
-
-[CodeIgniter Rest Server](https://github.com/chriskacerguis/codeigniter-restserver):
-
-```
-$ php bin/install.php restserver 2.7.2
-```
-[CodeIgniter Developer Toolbar](https://github.com/JCSama/CodeIgniter-develbar):
-
-```
-$ php bin/install.php codeigniter-develbar master
-```
-
-### Run PHP built-in server (PHP 5.4 or later)
-
-```
-$ cd /path/to/codeigniter
-$ bin/server.sh
-```
-
-### Update CodeIgniter
-
-```
-$ cd /path/to/codeigniter
-$ composer update
-```
-
-You must update files manually if files in `application` folder or `index.php` change. Check [CodeIgniter User Guide](http://www.codeigniter.com/user_guide/installation/upgrading.html).
-
-## Reference
-
-* [Composer Installation](https://getcomposer.org/doc/00-intro.md#installation-linux-unix-osx)
-* [CodeIgniter](https://github.com/bcit-ci/CodeIgniter)
-* [Translations for CodeIgniter System](https://github.com/bcit-ci/codeigniter3-translations)
-
-## Related Projects for CodeIgniter 3.x
-
-* [Cli for CodeIgniter 3.0](https://github.com/kenjis/codeigniter-cli)
-* [ci-phpunit-test](https://github.com/kenjis/ci-phpunit-test)
-* [CodeIgniter Simple and Secure Twig](https://github.com/kenjis/codeigniter-ss-twig)
-* [CodeIgniter Doctrine](https://github.com/kenjis/codeigniter-doctrine)
-* [CodeIgniter Deployer](https://github.com/kenjis/codeigniter-deployer)
-* [CodeIgniter3 Filename Checker](https://github.com/kenjis/codeigniter3-filename-checker)
-* [CodeIgniter Widget (View Partial) Sample](https://github.com/kenjis/codeigniter-widgets)
+---
