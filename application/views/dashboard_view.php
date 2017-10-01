@@ -101,7 +101,7 @@
                 <div class="col-md-12">
                     <fieldset>
                         <legend>Saved Jobs</legend>
-                        <table id="jobs" class="table table-striped table-bordered table-condensed table-hover dataTable no-footer">
+                        <table id="jobs" class="table table-striped table-bordered table-condensed table-hover dataTable no-footer" width="100%">
                             <thead>
                                 <tr>
                                     <th>UUID</th>
@@ -122,8 +122,9 @@
                                         <?php if (isset($job['urls']) && !empty($job['urls']) && $job['job_status'] != 'in_progress') { ?>
                                             <?php foreach ($job['urls'] as $url) { ?>
                                                 <tr class="found-urls">
-                                                    <td colspan="2"><?= $url['url_address'] ?></td>
-                                                    <td colspan="2">
+                                                    <td></td>
+                                                    <td><?= $url['url_address'] ?></td>
+                                                    <td>
                                                         <?php if (isset($url['emails']) && !empty($url['emails'])) { ?>
                                                             <?php foreach ($url['emails'] as $email) { ?>
                                                                 <?= $email['email_address'] . "<br/>" ?>
@@ -132,6 +133,7 @@
                                                             No emails found
                                                         <?php } ?>
                                                     </td>
+                                                    <td></td>
                                                 </tr>
                                             <?php } ?>
                                         <?php } ?>
@@ -146,7 +148,14 @@
         </div>
         <script type="text/javascript">
             $(window).load(function () {
-                $('#jobs').DataTable();
+                $('#jobs').dataTable({
+                    aLengthMenu: [
+                        [25, 50, 100, 200, -1],
+                        [25, 50, 100, 200, "All"]
+                    ],
+                    iDisplayLength: -1,
+                    "aaSorting": []
+                });
             });
         </script>
     </body>
