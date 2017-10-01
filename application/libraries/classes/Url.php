@@ -180,4 +180,62 @@ class Url {
             return false;
         return true;
     }
+    
+    /**
+     * Prepare Emails array to be inserted in DB
+     * 
+     * @param type $urlId
+     * @param type $emails
+     * @return boolean|array
+     */
+    public function prepareEmails($urlId, $emails) {
+        if (empty($emails))
+            return false;
+
+        $emailsToBatchInsert = array();
+        foreach ($emails as $email) {
+            array_push($emailsToBatchInsert, array('url_id' => $urlId, 'email_address' => $email));
+        }
+        return $emailsToBatchInsert;
+    }
+
+    /**
+     * Return saved Emails per URL
+     * 
+     * @param type $urlId
+     * @return boolean|array
+     */
+    public function getEmailsPerUrl($urlId) {
+        return $this->CI->url_model->getEmailsPerUrl($urlId);
+    }
+
+    /**
+     * Return saved Following URLS
+     * 
+     * @param type $jobUuid
+     * @return boolean|array
+     */
+    public function getFollowingUrls($jobUuid) {
+        return $this->CI->url_model->getFollowingUrls($jobUuid);
+    }
+
+    /**
+     * Batch insert emails
+     * 
+     * @param type $emailsBatchInsert
+     * @return boolean
+     */
+    public function addEmails($emailsBatchInsert) {
+        return $this->CI->url_model->addEmails($emailsBatchInsert);
+    }
+
+    /**
+     * Update URL as completed
+     * 
+     * @param type $urlId
+     * @return boolean
+     */
+    public function updateUrlCompleted($urlId) {
+        return $this->CI->url_model->updateUrlCompleted($urlId);
+    }
 }
