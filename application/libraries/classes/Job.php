@@ -14,8 +14,8 @@ require APPPATH . 'libraries/classes/Url.php';
 class Job {
    
     protected $CI;
-    protected $toParseUrls = array(); //array to store URLS to parse
-    protected $parsedUrls = array(); //array to store parsed URLS 
+    protected $toParseUrls = array(); //array to store URLS to be parsed
+    protected $parsedUrls = array(); //array to store already parsed URLS 
     protected $jobUUID;
     protected $url;
 
@@ -38,8 +38,6 @@ class Job {
 
         if (!$jobUUID = $this->addJob()) //Add JOB in DB
             return false;
-
-        echo $jobUUID;
 
         $urlData = $this->url->prepareUrlData($jobUUID, $this->url->urlAddress); //Prepare the URL array to be inserted in DB
 
